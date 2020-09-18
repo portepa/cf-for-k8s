@@ -71,7 +71,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-istio-control-plane
+  name: allow-control-plane
   namespace: #@ system_namespace()
 spec:
   podSelector: {}
@@ -80,11 +80,17 @@ spec:
     - namespaceSelector:
         matchLabels:
           cf-for-k8s.cloudfoundry.org/istio-system-ns: ""
+    - namespaceSelector:
+        matchLabels:
+          cf-for-k8s.cloudfoundry.org/contour-system-ns: ""
   egress:
   - to:
     - namespaceSelector:
         matchLabels:
           cf-for-k8s.cloudfoundry.org/istio-system-ns: ""
+    - namespaceSelector:
+        matchLabels:
+          cf-for-k8s.cloudfoundry.org/contour-system-ns: ""
   policyTypes:
   - Ingress
   - Egress
@@ -93,7 +99,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-istio-control-plane
+  name: allow-control-plane
   namespace: cf-db
 spec:
   podSelector: {}
@@ -102,11 +108,17 @@ spec:
     - namespaceSelector:
         matchLabels:
           cf-for-k8s.cloudfoundry.org/istio-system-ns: ""
+    - namespaceSelector:
+        matchLabels:
+          cf-for-k8s.cloudfoundry.org/contour-system-ns: ""
   egress:
   - to:
     - namespaceSelector:
         matchLabels:
           cf-for-k8s.cloudfoundry.org/istio-system-ns: ""
+    - namespaceSelector:
+        matchLabels:
+          cf-for-k8s.cloudfoundry.org/contour-system-ns: ""
   policyTypes:
   - Ingress
   - Egress
@@ -116,7 +128,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-istio-control-plane
+  name: allow-control-plane
   namespace: cf-blobstore
 spec:
   podSelector: {}
@@ -125,11 +137,17 @@ spec:
     - namespaceSelector:
         matchLabels:
           cf-for-k8s.cloudfoundry.org/istio-system-ns: ""
+    - namespaceSelector:
+        matchLabels:
+          cf-for-k8s.cloudfoundry.org/contour-system-ns: ""
   egress:
   - to:
     - namespaceSelector:
         matchLabels:
           cf-for-k8s.cloudfoundry.org/istio-system-ns: ""
+    - namespaceSelector:
+        matchLabels:
+          cf-for-k8s.cloudfoundry.org/contour-system-ns: ""
   policyTypes:
   - Ingress
   - Egress
@@ -265,6 +283,9 @@ spec:
       namespaceSelector:
         matchLabels:
           cf-for-k8s.cloudfoundry.org/istio-system-ns: ""
+    - namespaceSelector:
+        matchLabels:
+          cf-for-k8s.cloudfoundry.org/contour-system-ns: ""
     - podSelector:
         matchLabels:
           app: log-cache
@@ -306,6 +327,9 @@ spec:
       namespaceSelector:
         matchLabels:
           cf-for-k8s.cloudfoundry.org/istio-system-ns: ""
+    - namespaceSelector:
+        matchLabels:
+          cf-for-k8s.cloudfoundry.org/contour-system-ns: ""
     - podSelector:
         matchLabels:
           app.kubernetes.io/name: cf-api-controllers
@@ -463,6 +487,9 @@ spec:
       namespaceSelector:
         matchLabels:
           cf-for-k8s.cloudfoundry.org/istio-system-ns: ""
+    - namespaceSelector:
+        matchLabels:
+          cf-for-k8s.cloudfoundry.org/contour-system-ns: ""
     - podSelector:
         matchLabels:
           cloudfoundry.org/source_type: STG
@@ -646,6 +673,9 @@ spec:
       namespaceSelector:
         matchLabels:
           cf-for-k8s.cloudfoundry.org/istio-system-ns: ""
+    - namespaceSelector:
+        matchLabels:
+          cf-for-k8s.cloudfoundry.org/contour-system-ns: ""
     - podSelector:
         matchLabels:
           app: fluentd
@@ -734,5 +764,8 @@ spec:
       namespaceSelector:
         matchLabels:
           cf-for-k8s.cloudfoundry.org/istio-system-ns: ""
+    - namespaceSelector:
+        matchLabels:
+          cf-for-k8s.cloudfoundry.org/contour-system-ns: ""
   egress:
   - {}
