@@ -8,3 +8,4 @@ metadata:
   name: #@ system_namespace()
   labels:
     cf-for-k8s.cloudfoundry.org/cf-system-ns: ""
+    quarks.cloudfoundry.org/monitored: cf-quarks-secret
