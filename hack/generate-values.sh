@@ -130,6 +130,8 @@ variables:
   options:
     ca: default_ca
     common_name: "*.apps.${DOMAIN}"
+    alternative_names:
+    - "*.apps.${DOMAIN}"
     extended_key_usage:
     - server_auth
 - name: internal_certificate
